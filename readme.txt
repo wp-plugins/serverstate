@@ -14,7 +14,7 @@ Dashboard-Widget für Serverstate, das zuverlässige Server Monitoring Tool. Blo
 
 == Description ==
 
-= Blog-Überwachung =
+= Online-Status & Performance =
 [Serverstate](http://serverstate.de/?referrer=245049071 "Server Monitoring") *(Partnerlink)* ist ein Monitoring Service, welches die Erreichbarkeit von Webseiten überwacht und deren Antwortzeiten misst. Im Fall einer Nichterreichbarkeit der Zielseite verschickt der Dienst eine E-Mail, Tweet oder SMS als Benachrichtigung.
 
 Das Serverstate Plugin legt im WordPress-Administrationsbereich ein Dashboard-Widget an, welches Antwortzeiten und Erreichbarkeitswerte als Statistik abbildet. Wie oft war der Blog offline? Hat sich nach einem Update die Performance verschlechtert? Das Serverstate Widget liefert Antworten und schafft einen Überblick über die Erreichbarkeit und Geschwindigkeit des Blogs in den letzten 30 Tagen.
@@ -25,8 +25,8 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 
 = Hinweise =
 1. Bei neu angelegten Serverstate Überwachungsaufträgen kann es mehrere Stunden dauern, bis Serverstate hierzu Daten zum Abruf bereit stellt.
-1. Das Serverstate Plugin verfügt über einen internen Cache, in dem die Statistik für eine Stunde aufbewahrt wird.
-1. Die Sensor-ID ist eine Zahl, die von Serverstate einem Überwachungsauftrag zugewiesen und beim Anzeigen bzw. Bearbeiten in der URL sichtbar ist: `?sensor_id=912164573`
+1. Das Serverstate Plugin verfügt über einen internen Cache, wo die Statistik für eine Stunde aufbewahrt wird. Nach Ablauf des Zeitraumes wird eine Synchronisation durchgeführt.
+1. Die Sensor-ID ist eine Zahl, die von Serverstate einem Überwachungsauftrag zugewiesen und beim Anzeigen bzw. Bearbeiten in der URL sichtbar ist. Der Muster: *?sensor_id=912164573*
 1. Serverstate ist ein kostenpflichtiger Dienst. Der Kostenfaktor richtet sich ja nach Verbrauch und Häufigkeit der Prüfungen aus. [Kurze Einführung](https://plus.google.com/110569673423509816572/posts/hWdRrhWyots).
 
 
