@@ -57,7 +57,7 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 
 == Installation ==
 
-1. Den kompletten Plugin-Ordner ins WordPress-Verzeichnis `/wp-content/plugins/ übertragen.
+1. Den Plugin-Ordner ins WordPress-Verzeichnis `/wp-content/plugins/` übertragen.
 1. Das Plugin unter *Plugins* aktivieren.
 1. In der gleichen Ansicht auf *Einstellungen* klicken.
 1. Im Formular die Serverstate Zugangsdaten und die Sensor-ID eingeben.
