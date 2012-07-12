@@ -262,7 +262,7 @@ class Serverstate_Dashboard
 			set_transient(
 			   'serverstate',
 			   $data,
-			   60 * 60 * 1 // = 1 Stunde
+			   60 * 60 * 12 // = 12 Stunden
 			 );
 		}
 		

@@ -25,7 +25,7 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 
 = Hinweise =
 1. Bei neu angelegten Serverstate Überwachungsaufträgen kann es mehrere Stunden dauern, bis Serverstate hierzu Daten zum Abruf bereit stellt.
-1. Das Serverstate Plugin verfügt über einen internen Cache, wo die Statistik für eine Stunde aufbewahrt wird. Nach Ablauf des Zeitraumes wird eine Synchronisation durchgeführt.
+1. Das Serverstate Plugin verfügt über einen internen Cache, wo die Statistik für einen halben Tag aufbewahrt wird. Nach Ablauf des Zeitraumes wird eine Synchronisation durchgeführt.
 1. Die Sensor-ID ist eine Zahl, die von Serverstate einem Überwachungsauftrag zugewiesen und beim Anzeigen bzw. Bearbeiten in der URL sichtbar ist. Das zu suchende Muster: *?sensor_id=912164573*
 1. Serverstate ist ein kostenpflichtiger Dienst. Der Kostenfaktor richtet sich ja nach Verbrauch und Häufigkeit der Prüfungen aus. [Kurze Einführung](https://plus.google.com/110569673423509816572/posts/hWdRrhWyots).
 
