@@ -239,7 +239,7 @@ class Serverstate_Dashboard
 	* Rückgabe der Statistik-Werte
 	*
 	* @since   0.1
-	* @change  0.1
+	* @change  0.2
 	*
 	* @return  array  $data  Array mit Statistik- oder Fehlerwerten
 	*/
@@ -274,7 +274,7 @@ class Serverstate_Dashboard
 	* Call an die Serverstate-API
 	*
 	* @since   0.1
-	* @change  0.1
+	* @change  0.2
 	*
 	* @return  mixed  $data  Array mit API-Werten oder Fehlermeldungen
 	*/
@@ -333,7 +333,20 @@ class Serverstate_Dashboard
 			/* Body */
 			$body = wp_remote_retrieve_body($response);
 			
-			/* Fehler? */
+			/* Falsche Sensor-ID? */
+			if ( $body == 'ERROR_INVALID_REQUEST' ) {
+				return sprintf(
+					'Bitte die Sensor-ID im Dashboard-Widget <a href="%s">überprüfen</a>.',
+					add_query_arg(
+						array(
+							'edit' => 'serverstate_dashboard#serverstate_dashboard'
+						),
+						admin_url('/')
+					)
+				);
+			}
+			
+			/* Falsche Daten? */
 			if ( $body == 'ERROR_INVALID_AUTH' ) {
 				return sprintf(
 					'Bitte Zugangsdaten im Dashboard-Widget <a href="%s">überprüfen</a>.',
