@@ -5,7 +5,7 @@ Description: Server Monitoring für WordPress. Dashboard-Widget mit Reaktionszei
 Author: Sergej M&uuml;ller
 Author URI: http://wpseo.de
 Plugin URI: http://wordpress.org/extend/plugins/serverstate/
-Version: 0.1
+Version: 0.2
 */
 
 
