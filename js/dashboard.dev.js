@@ -7,7 +7,31 @@ function drawChart() {
 		rows = [],
 		output = jQuery('#serverstate_chart'),
 		data = new google.visualization.DataTable();
-
+	
+	/* Nichts im Cache? */
+	if ( typeof(serverstate) === 'undefined' ) {
+		showSpinner(20, 16, output);
+		
+		jQuery.ajax(
+			{
+				'url': ajaxurl,
+				'data': {
+					'action': 'serverstate'
+				},
+				'dataType': 'JSON',
+				'success': function(response) {
+					serverstate = response;
+					drawChart();
+				},
+				'error': function(error){
+	               alert(error);
+	          }
+			}
+		);
+		
+		return;
+	}
+	
 	/* Fehler? */
 	if ( typeof(serverstate.error) !== 'undefined' ) {
 		return output.html(serverstate.error);
@@ -61,5 +85,47 @@ function drawChart() {
 				height: "100%"
 			}
 		}
+	);
+}
+
+
+/* Spinner */
+function showSpinner(size, bars, target) {
+	/* Anlegen */
+	var $canvas = jQuery('<canvas />').attr(
+		{
+			'width': size,
+			'height': size
+		}
+	);
+	
+	/* Kein Support? */
+	if ( !$canvas[0].getContext ) {
+		return;
+	}
+	
+	/* Zuweisen */
+	target.append($canvas);
+	
+	/* Eigenschaften */
+	ctx = $canvas[0].getContext('2d');
+	ctx.translate(size/2,size/2);
+	
+	/* Loopen */
+	setInterval(
+		function() {
+			ctx.clearRect(-size/2,-size/2,size,size);
+			ctx.rotate(Math.PI*2/bars);
+		
+			for (var i=0; i<bars; i++) {
+				ctx.beginPath();
+				ctx.moveTo(0,size/4);
+				ctx.lineTo(0,size/2);
+				ctx.strokeStyle = 'rgba(0,0,0,' + i/bars + ')';
+				ctx.stroke();
+				ctx.rotate(Math.PI*2/bars);
+			}
+		},
+		50
 	);
 }

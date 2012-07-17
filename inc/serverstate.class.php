@@ -28,22 +28,29 @@ class Serverstate
 	* Konstruktor der Klasse
 	*
 	* @since   0.1
-	* @change  0.1
+	* @change  0.3
 	*/
 
 	public function __construct()
 	{
 		/* Filter */
-		if ( (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) or (defined('DOING_CRON') && DOING_CRON) or (defined('DOING_AJAX') && DOING_AJAX) or (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) ) {
+		if ( (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) or (defined('DOING_CRON') && DOING_CRON) or (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) ) {
 			return;
 		}
-		
+
 		/* BE only */
 		if ( !is_admin() ) {
 			return;
 		}
 		
 		/* Hooks */
+		add_action(
+			'wp_ajax_serverstate',
+			array(
+				__CLASS__,
+				'ajax'
+			)
+		);
 		add_action(
 			'wpmu_new_blog',
 			array(
@@ -81,6 +88,25 @@ class Serverstate
 				'add_action_link'
 			)
 		);
+	}
+	
+	
+	/**
+	* Ausgabe der Statistiken als JSON
+	*
+	* @since   0.3
+	* @change  0.3
+	*/
+	
+	public static function ajax()
+	{
+		print_r(
+			json_encode(
+				Serverstate_Dashboard::get_stats()
+			)
+		);
+		
+		die();
 	}
 
 

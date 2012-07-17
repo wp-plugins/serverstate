@@ -33,6 +33,7 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 = Systemanforderungen =
 * PHP ab 5.3
 * WordPress ab 3.3
+* Moderner Browser
 * Serverstate Account
 
 = Autor =
@@ -43,6 +44,9 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 
 
 == Changelog ==
+
+= 0.3 =
+* AJAX-Loading der Daten für verbesserte Dashboard-Performance
 
 = 0.2 =
 * Hinweis auf eine fehlerhafte Sensor-ID

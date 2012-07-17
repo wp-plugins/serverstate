@@ -88,7 +88,7 @@ class Serverstate_Dashboard
 	* Ausgabe von JavaScript
 	*
 	* @since   0.1
-	* @change  0.1
+	* @change  0.3
 	*/
 
 	public static function add_js() {
@@ -110,11 +110,13 @@ class Serverstate_Dashboard
 		wp_enqueue_script('serverstate');
 
 		/* Übergeben */
-		wp_localize_script(
-			'serverstate',
-			'serverstate',
-			self::_get_stats()
-		);
+		if ( $data = self::get_stats('cache') ) {
+			wp_localize_script(
+				'serverstate',
+				'serverstate',
+				$data
+			);
+		}
 	}
 	
 	
@@ -195,8 +197,6 @@ class Serverstate_Dashboard
 			delete_transient('serverstate');
 		}
 
-		
-
 		/* Security */
 		wp_nonce_field('_serverstate'); ?>
 
@@ -239,15 +239,24 @@ class Serverstate_Dashboard
 	* Rückgabe der Statistik-Werte
 	*
 	* @since   0.1
-	* @change  0.2
+	* @change  0.3
 	*
-	* @return  array  $data  Array mit Statistik- oder Fehlerwerten
+	* @param   string  $from  Quelle der Daten [optional]
+	* @return  array   $data  Array mit Statistik- oder Fehlerwerten
 	*/
 	
-	private static function _get_stats()
+	public static function get_stats($from = 'all')
 	{
+		/* Auf Cache zugreifen */
+		$data = get_transient('serverstate');
+
+		/* Cache liefern? */
+		if ( $from === 'cache' ) {
+			return $data;
+		}
+		
 		/* Cronjob */
-		if ( ! $data = get_transient('serverstate') ) {
+		if ( empty($data) ) {
 			/* API Call */
 			$response = self::_api_call();
 			
