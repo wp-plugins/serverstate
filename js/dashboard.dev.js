@@ -22,10 +22,7 @@ function drawChart() {
 				'success': function(response) {
 					serverstate = response;
 					drawChart();
-				},
-				'error': function(error){
-	               alert(error);
-	          }
+				}
 			}
 		);
 		
