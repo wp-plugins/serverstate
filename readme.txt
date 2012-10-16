@@ -17,7 +17,7 @@ Dashboard-Widget für Serverstate, das zuverlässige Server Monitoring Tool. Blo
 == Description ==
 
 = Online-Status & Performance =
-[Serverstate](http://serverstate.de/?referrer=245049071 "Server Monitoring")* ist ein Monitoring Service, welches die Erreichbarkeit von Webseiten überwacht und deren Antwortzeiten misst. Im Fall einer Nichterreichbarkeit der Zielseite verschickt der Dienst eine E-Mail, Tweet oder SMS als Benachrichtigung.
+[Serverstate](http://serverstate.de/?referrer=245049071 "Server Monitoring") *Partnerlink* ist ein Monitoring Service, welches die Erreichbarkeit von Webseiten überwacht und deren Antwortzeiten misst. Im Fall einer Nichterreichbarkeit der Zielseite verschickt der Dienst eine E-Mail, Tweet oder SMS als Benachrichtigung.
 
 Das Serverstate Plugin legt im WordPress-Administrationsbereich ein Dashboard-Widget an, welches Antwortzeiten und Erreichbarkeitswerte als Statistik abbildet. Wie oft war der Blog offline? Hat sich nach einem Update die Performance verschlechtert? Das Serverstate Widget liefert Antworten und schafft einen Überblick über die Erreichbarkeit und Geschwindigkeit des Blogs in den letzten 30 Tagen.
 
@@ -36,14 +36,12 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 * PHP ab 5.2
 * WordPress ab 3.3
 * Moderner Browser
-* [Serverstate](http://serverstate.de/?referrer=245049071)* Account
+* Serverstate Account
 
 = Autor =
 * [Google+](https://plus.google.com/110569673423509816572 "Google+")
 * [Plugins](http://wpcoder.de "Plugins")
 * [Portfolio](http://ebiene.de "Portfolio")
-
-*Partnerlink
 
 
 
@@ -61,7 +59,7 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 * Umstellung der Cache-Dauer von 1 auf 12 Stunden
 
 = 0.1 =
-* Serverstate geht online
+* Serverstate Plugin geht online
 
 
 
