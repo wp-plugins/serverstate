@@ -17,13 +17,13 @@ Dashboard-Widget für Serverstate, das zuverlässige Server Monitoring Tool. Blo
 == Description ==
 
 = Online-Status & Performance =
-[Serverstate](http://serverstate.de/?referrer=245049071 "Server Monitoring") *Partnerlink* ist ein Monitoring Service, welches die Erreichbarkeit von Webseiten überwacht und deren Antwortzeiten misst. Im Fall einer Nichterreichbarkeit der Zielseite verschickt der Dienst eine E-Mail, Tweet oder SMS als Benachrichtigung.
+[Serverstate](http://serverstate.de/?referrer=245049071 "Server Monitoring") *(Partnerlink)* ist ein Monitoring Service, welches die Erreichbarkeit von Webseiten überwacht und deren Antwortzeiten misst. Im Fall einer Nichterreichbarkeit der Zielseite verschickt der Dienst eine E-Mail, Tweet oder SMS als Benachrichtigung.
 
 Das Serverstate Plugin legt im WordPress-Administrationsbereich ein Dashboard-Widget an, welches Antwortzeiten und Erreichbarkeitswerte als Statistik abbildet. Wie oft war der Blog offline? Hat sich nach einem Update die Performance verschlechtert? Das Serverstate Widget liefert Antworten und schafft einen Überblick über die Erreichbarkeit und Geschwindigkeit des Blogs in den letzten 30 Tagen.
 
 Direkt im Serverstate Widget über den Link *Konfigurieren* werden die Zugangsdaten des Serverstate Accounts und die zuständige Sensor-ID (ID des Überwachungsauftrags) hinterlegt. Bedauerlicherweise stellt Serverstate keine API-Kommunikation mithilfe eines API-Schlüssels zur Verfügung. Somit werden Zugangsdaten des Accounts in WordPress verschlüsselt gespeichert und ausschließlich zum Datenabgleich mit der Serverstate Schnittstelle verwendet.
 
-Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei Mausberührungen erscheint die jeweilige Kennzahl zum gewählten Tag: Wahlweise die *Antwortzeit in Millisekunden* oder die *Erreichbarkeit in Prozent*.
+Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei Mausberührungen erscheint die jeweilige Kennzahl zum gewählten Tag: *Antwortzeit in Millisekunden* oder *Erreichbarkeit in Prozent* (sind zwei Diagrammlinien).
 
 = Hinweise =
 1. Bei neu angelegten Serverstate Überwachungsaufträgen kann es mehrere Stunden dauern, bis Serverstate hierzu Daten zum Abruf bereit stellt.
