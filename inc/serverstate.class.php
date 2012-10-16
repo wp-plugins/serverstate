@@ -114,7 +114,7 @@ class Serverstate
 	* Hinzufügen der Meta-Links
 	*
 	* @since   0.1
-	* @change  0.1
+	* @change  0.4
 	*
 	* @param   array   $input  Array mit Links
 	* @param   string  $file   Name des Plugins
@@ -131,7 +131,7 @@ class Serverstate
 		return array_merge(
 			$input,
 			array(
-				'<a href="http://wpcoder.de" target="_blank">Weitere Plugins des Autors</a>'
+				'<a href="http://wpcoder.de" target="_blank">Plugins des Autors</a>'
 			)
 		);
 	}

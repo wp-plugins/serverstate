@@ -405,7 +405,7 @@ class Serverstate_Dashboard
 	* Vorbereitung der Werte für JS
 	*
 	* @since   0.1
-	* @change  0.1
+	* @change  0.4
 	*
 	* @param   array  $data  Unbehandelter Array
 	* @return  array  $data  Behandelter Array
@@ -420,9 +420,10 @@ class Serverstate_Dashboard
 		
 		/* Einträge binden */
 		return array_map(
-			function($array) {
-				return implode(',', $array);
-			},
+			array(
+				__CLASS__,
+				'_array_map_callback'
+			),
 			$data
 		);
 	}
@@ -442,5 +443,21 @@ class Serverstate_Dashboard
 		
 		/* Zuweisen */
 		define('SERVERSTATE_VERSION', $meta['Version']);
+	}
+	
+	
+	/**
+	* Callback für array_map (PHP 5.2)
+	*
+	* @since   0.4
+	* @change  0.4
+	*
+	* @param   array   $array  Array mit Werten
+	* @return  string          Kommaseparierter String
+	*/
+	
+	private static function _array_map_callback($array)
+	{
+		return implode(',', $array);
 	}
 }

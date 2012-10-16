@@ -3,8 +3,10 @@ Contributors: sergej.mueller
 Tags: stats, server, monitoring, response, uptime
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6
 Requires at least: 3.3
-Tested up to: 3.4
+Tested up to: 3.5
 Stable tag: trunk
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 
@@ -15,7 +17,7 @@ Dashboard-Widget für Serverstate, das zuverlässige Server Monitoring Tool. Blo
 == Description ==
 
 = Online-Status & Performance =
-[Serverstate](http://serverstate.de/?referrer=245049071 "Server Monitoring") *(Partnerlink)* ist ein Monitoring Service, welches die Erreichbarkeit von Webseiten überwacht und deren Antwortzeiten misst. Im Fall einer Nichterreichbarkeit der Zielseite verschickt der Dienst eine E-Mail, Tweet oder SMS als Benachrichtigung.
+[Serverstate](http://serverstate.de/?referrer=245049071 "Server Monitoring")* ist ein Monitoring Service, welches die Erreichbarkeit von Webseiten überwacht und deren Antwortzeiten misst. Im Fall einer Nichterreichbarkeit der Zielseite verschickt der Dienst eine E-Mail, Tweet oder SMS als Benachrichtigung.
 
 Das Serverstate Plugin legt im WordPress-Administrationsbereich ein Dashboard-Widget an, welches Antwortzeiten und Erreichbarkeitswerte als Statistik abbildet. Wie oft war der Blog offline? Hat sich nach einem Update die Performance verschlechtert? Das Serverstate Widget liefert Antworten und schafft einen Überblick über die Erreichbarkeit und Geschwindigkeit des Blogs in den letzten 30 Tagen.
 
@@ -31,19 +33,25 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 
 
 = Systemanforderungen =
-* PHP ab 5.3
+* PHP ab 5.2
 * WordPress ab 3.3
 * Moderner Browser
-* Serverstate Account
+* [Serverstate](http://serverstate.de/?referrer=245049071)* Account
 
 = Autor =
 * [Google+](https://plus.google.com/110569673423509816572 "Google+")
 * [Plugins](http://wpcoder.de "Plugins")
 * [Portfolio](http://ebiene.de "Portfolio")
 
+*Partnerlink
+
 
 
 == Changelog ==
+
+= 0.4 =
+* Unterstützung für WordPress 3.5
+* Lauffähig unter PHP 5.2
 
 = 0.3 =
 * AJAX-Loading der Daten für verbesserte Dashboard-Performance
