@@ -7,11 +7,11 @@ function drawChart() {
 		rows = [],
 		output = jQuery('#serverstate_chart'),
 		data = new google.visualization.DataTable();
-	
+
 	/* Nichts im Cache? */
 	if ( typeof(serverstate) === 'undefined' ) {
 		showSpinner(20, 16, output);
-		
+
 		jQuery.ajax(
 			{
 				'url': ajaxurl,
@@ -25,20 +25,20 @@ function drawChart() {
 				}
 			}
 		);
-		
+
 		return;
 	}
-	
+
 	/* Fehler? */
 	if ( typeof(serverstate.error) !== 'undefined' ) {
 		return output.html(serverstate.error);
 	}
-	
+
 	/* Extrahieren */
 	var day = serverstate.day.split(','),
 		uptime = serverstate.uptime.split(','),
 		response = serverstate.response.split(',');
-	
+
 	/* Loopen */
 	for (id in day) {
 		rows[id] = [day[id], parseInt(response[id]), parseInt(uptime[id])];
@@ -50,7 +50,7 @@ function drawChart() {
 	data.addRows(rows);
 
 	var chart = new google.visualization.AreaChart(output.get(0));
-  	
+
   	chart.draw(
   		data,
   		{
@@ -60,7 +60,7 @@ function drawChart() {
 			pointSize: 6,
 			lineWidth: 3,
 			gridlineColor: '#ececec',
-			colors:['#3399CC'],
+			colors:['#39C'],
 			reverseCategories: true,
 			backgroundColor: 'transparent',
 			vAxis: {
@@ -95,25 +95,25 @@ function showSpinner(size, bars, target) {
 			'height': size
 		}
 	);
-	
+
 	/* Kein Support? */
 	if ( !$canvas[0].getContext ) {
 		return;
 	}
-	
+
 	/* Zuweisen */
 	target.append($canvas);
-	
+
 	/* Eigenschaften */
 	ctx = $canvas[0].getContext('2d');
 	ctx.translate(size/2,size/2);
-	
+
 	/* Loopen */
 	setInterval(
 		function() {
 			ctx.clearRect(-size/2,-size/2,size,size);
 			ctx.rotate(Math.PI*2/bars);
-		
+
 			for (var i=0; i<bars; i++) {
 				ctx.beginPath();
 				ctx.moveTo(0,size/4);

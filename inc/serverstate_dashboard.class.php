@@ -9,8 +9,8 @@
 
 class Serverstate_Dashboard
 {
-	
-	
+
+
 	/**
 	* Installation auch für MU-Blog
 	*
@@ -24,7 +24,7 @@ class Serverstate_Dashboard
 		if ( !current_user_can('level_2') ) {
 			return;
 		}
-		
+
 		/* Version definieren */
 		self::_define_version();
 
@@ -60,8 +60,8 @@ class Serverstate_Dashboard
 			)
 		);
 	}
-	
-	
+
+
 	/**
 	* Ausgabe der Stylesheets
 	*
@@ -118,8 +118,8 @@ class Serverstate_Dashboard
 			);
 		}
 	}
-	
-	
+
+
 	/**
 	* Ausgabe der Frontseite
 	*
@@ -148,7 +148,7 @@ class Serverstate_Dashboard
 		if ( !current_user_can('manage_options') ) {
 			return;
 		}
-		
+
 		/* Optionen */
 		$options = wp_parse_args(
 			get_option('serverstate'),
@@ -158,35 +158,35 @@ class Serverstate_Dashboard
 				'sensor_id' => ''
 			)
 		);
-		
+
 		/* Speichern */
 		if ( !empty($_POST['serverstate']) && is_array($_POST['serverstate']) ) {
 			/* Formular-Referer */
 			check_admin_referer('_serverstate');
-			
+
 			/* Zuweisen */
 			$input = $_POST['serverstate'];
-			
+
 			/* Benutzername */
 			if ( !empty($input['nickname']) ) {
 				$input['nickname'] = sanitize_text_field($input['nickname']);
 			}
-			
+
 			/* Passwort */
 			if ( !empty($input['password']) ) {
 				if ( $input['password'] != $options['password'] ) {
 					$input['password'] = md5(sanitize_text_field($input['password']));
 				}
 			}
-			
+
 			/* Sensor ID */
 			if ( !empty($input['sensor_id']) ) {
 				$input['sensor_id'] = intval($input['sensor_id']);
 			}
-			
+
 			/* Refresh */
 			$options = $input;
-			
+
 			/* Save */
 			update_option(
 				'serverstate',
@@ -228,13 +228,13 @@ class Serverstate_Dashboard
 					<em>Partnerlink. Danke.</em>
 				</td>
 			</tr>
-			
+
 		</table>
 
 		<?php
 	}
-	
-	
+
+
 	/**
 	* Rückgabe der Statistik-Werte
 	*
@@ -244,7 +244,7 @@ class Serverstate_Dashboard
 	* @param   string  $from  Quelle der Daten [optional]
 	* @return  array   $data  Array mit Statistik- oder Fehlerwerten
 	*/
-	
+
 	public static function get_stats($from = 'all')
 	{
 		/* Auf Cache zugreifen */
@@ -254,19 +254,19 @@ class Serverstate_Dashboard
 		if ( $from === 'cache' ) {
 			return $data;
 		}
-		
+
 		/* Cronjob */
 		if ( empty($data) ) {
 			/* API Call */
 			$response = self::_api_call();
-			
+
 			/* Array? */
 			if ( is_array($response) ) {
 				$data = self::_prepare_stats($response);
 			} else {
 				$data['error'] = $response;
 			}
-			
+
 			/* Merken */
 			set_transient(
 			   'serverstate',
@@ -274,11 +274,11 @@ class Serverstate_Dashboard
 			   60 * 60 * 12 // = 12 Stunden
 			 );
 		}
-		
+
 		return $data;
 	}
-	
-	
+
+
 	/**
 	* Call an die Serverstate-API
 	*
@@ -287,19 +287,19 @@ class Serverstate_Dashboard
 	*
 	* @return  mixed  $data  Array mit API-Werten oder Fehlermeldungen
 	*/
-	
+
 	private static function _api_call()
 	{
 		/* Optionen */
 		$options = get_option('serverstate');
-		
+
 		/* Init */
 		$data = array(
 			'day'      => array(),
 			'uptime'   => array(),
 			'response' => array()
 		);
-		
+
 		/* Leer? */
 		if ( empty($options['nickname']) or empty($options['password']) or empty($options['sensor_id']) ) {
 			return sprintf(
@@ -312,7 +312,7 @@ class Serverstate_Dashboard
 				)
 			);
 		}
-		
+
 		/* Tage loopen */
 		for ($i = 0; $i < 30; $i ++) {
 			/* URL erfragen */
@@ -338,10 +338,10 @@ class Serverstate_Dashboard
 			if ( is_wp_error($response) ) {
 				return $response->get_error_message();
 			}
-			
+
 			/* Body */
 			$body = wp_remote_retrieve_body($response);
-			
+
 			/* Falsche Sensor-ID? */
 			if ( $body == 'ERROR_INVALID_REQUEST' ) {
 				return sprintf(
@@ -354,7 +354,7 @@ class Serverstate_Dashboard
 					)
 				);
 			}
-			
+
 			/* Falsche Daten? */
 			if ( $body == 'ERROR_INVALID_AUTH' ) {
 				return sprintf(
@@ -367,40 +367,40 @@ class Serverstate_Dashboard
 					)
 				);
 			}
-			
+
 			/* Dekodieren */
 			$xml = simplexml_load_string($body);
-			
+
 			/* Fehler? */
 			if ( $xml === false ) {
 				return 'Houston, wir haben ein Problem: Kein XML als Rückgabe?';
 			}
-			
+
 			/* Zuweisen */
 			$day = (string) $xml->day;
 			$uptime = (int) $xml->uptime_percent;
 			$response = (int) $xml->response_time;
-			
+
 			/* Ungültig? */
 			if ( $uptime === -1 or $response === -1 ) {
 				continue;
 			}
-			
+
 			/* Zusammenführen */
 			array_push($data['day'], $day);
 			array_push($data['uptime'], $uptime);
 			array_push($data['response'], $response);
 		}
-		
+
 		/* Nichts gesammelt? */
 		if ( empty($data['day']) ) {
 			return 'Aktuell sind keine Daten zur Anzeige vorhanden.';
 		}
-		
+
 		return $data;
 	}
-	
-	
+
+
 	/**
 	* Vorbereitung der Werte für JS
 	*
@@ -410,14 +410,14 @@ class Serverstate_Dashboard
 	* @param   array  $data  Unbehandelter Array
 	* @return  array  $data  Behandelter Array
 	*/
-	
+
 	private static function _prepare_stats($data)
 	{
 		/* Leer? */
 		if ( empty($data) ) {
 			return array();
 		}
-		
+
 		/* Einträge binden */
 		return array_map(
 			array(
@@ -427,25 +427,25 @@ class Serverstate_Dashboard
 			$data
 		);
 	}
-	
-	
+
+
 	/**
 	* Plugin-Version als Konstante
 	*
 	* @since   0.1
 	* @change  0.1
 	*/
-	
+
 	private static function _define_version()
 	{
 		/* Auslesen */
 		$meta = get_plugin_data(SERVERSTATE_FILE);
-		
+
 		/* Zuweisen */
 		define('SERVERSTATE_VERSION', $meta['Version']);
 	}
-	
-	
+
+
 	/**
 	* Callback für array_map (PHP 5.2)
 	*
@@ -455,7 +455,7 @@ class Serverstate_Dashboard
 	* @param   array   $array  Array mit Werten
 	* @return  string          Kommaseparierter String
 	*/
-	
+
 	private static function _array_map_callback($array)
 	{
 		return implode(',', $array);

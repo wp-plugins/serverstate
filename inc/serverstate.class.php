@@ -17,13 +17,13 @@ class Serverstate
 	* @since   0.1
 	* @change  0.1
 	*/
-	
+
 	public static function instance()
 	{
 		new self();
 	}
-	
-	
+
+
 	/**
 	* Konstruktor der Klasse
 	*
@@ -42,7 +42,7 @@ class Serverstate
 		if ( !is_admin() ) {
 			return;
 		}
-		
+
 		/* Hooks */
 		add_action(
 			'wp_ajax_serverstate',
@@ -89,15 +89,15 @@ class Serverstate
 			)
 		);
 	}
-	
-	
+
+
 	/**
 	* Ausgabe der Statistiken als JSON
 	*
 	* @since   0.3
 	* @change  0.3
 	*/
-	
+
 	public static function ajax()
 	{
 		print_r(
@@ -105,7 +105,7 @@ class Serverstate
 				Serverstate_Dashboard::get_stats()
 			)
 		);
-		
+
 		die();
 	}
 
@@ -127,16 +127,17 @@ class Serverstate
 		if ( $file !== SERVERSTATE_BASE ) {
 			return $input;
 		}
-		
+
 		return array_merge(
 			$input,
 			array(
-				'<a href="http://wpcoder.de" target="_blank">Plugins des Autors</a>'
+				'<a href="https://flattr.com/donation/give/to/sergej.mueller" target="_blank">Flattr</a>',
+				'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=5RDDW9FEHGLG6" target="_blank">PayPal</a>'
 			)
 		);
 	}
-	
-	
+
+
 	/**
 	* Hinzufügen des Action-Links
 	*
@@ -150,7 +151,7 @@ class Serverstate
 		if ( !current_user_can('manage_options') ) {
 			return $input;
 		}
-		
+
 		/* Zusammenführen */
 		return array_merge(
 			$input,
