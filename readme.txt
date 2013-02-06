@@ -33,6 +33,10 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 1. *Serverstate* ist ein kostenpflichtiger Dienst. Der Kostenfaktor richtet sich ja nach Verbrauch und Häufigkeit der Prüfungen aus. [Kurze Einführung](https://plus.google.com/110569673423509816572/posts/hWdRrhWyots).
 
 
+= Support =
+Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
+
+
 = Systemanforderungen =
 * PHP ab 5.2
 * WordPress ab 3.3
