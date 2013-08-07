@@ -39,7 +39,7 @@ class Serverstate
 		}
 
 		/* BE only */
-		if ( !is_admin() ) {
+		if ( ! is_admin() ) {
 			return;
 		}
 
@@ -114,7 +114,7 @@ class Serverstate
 	* Hinzufügen der Meta-Links
 	*
 	* @since   0.1
-	* @change  0.4
+	* @change  0.5
 	*
 	* @param   array   $input  Array mit Links
 	* @param   string  $file   Name des Plugins
@@ -131,7 +131,7 @@ class Serverstate
 		return array_merge(
 			$input,
 			array(
-				'<a href="https://flattr.com/profile/sergej.mueller" target="_blank">Flattr</a>',
+				'<a href="https://flattr.com/t/1768517" target="_blank">Flattr</a>',
 				'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=5RDDW9FEHGLG6" target="_blank">PayPal</a>'
 			)
 		);

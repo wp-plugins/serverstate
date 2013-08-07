@@ -4,15 +4,13 @@ Plugin Name: Serverstate
 Description: Server Monitoring für WordPress. Dashboard-Widget mit Reaktionszeiten und Erreichbarkeitsmessungen des Blogs. Setzt einen Serverstate-Account voraus.
 Author: Sergej M&uuml;ller
 Author URI: http://wpcoder.de
-Plugin URI: http://wordpress.org/extend/plugins/serverstate/
-Version: 0.4
+Plugin URI: http://wordpress.org/plugins/serverstate/
+Version: 0.5
 */
 
 
-/* Kein WP? */
-if ( !class_exists('WP') ) {
-	die();
-}
+/* Quit */
+defined('ABSPATH') OR exit;
 
 
 /* Konstanten */

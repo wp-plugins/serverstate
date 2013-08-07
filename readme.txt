@@ -1,6 +1,6 @@
 === Serverstate ===
 Contributors: sergej.mueller
-Tags: stats, server, monitoring, response, uptime
+Tags: stats, server, monitoring, response, uptime, serverstate
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6
 Requires at least: 3.3
 Tested up to: 3.6
@@ -19,9 +19,9 @@ Dashboard-Widget für Serverstate, das zuverlässige Server Monitoring Tool. Blo
 = Online-Status & Performance =
 [Serverstate](http://serverstate.de/?referrer=245049071 "Server Monitoring") *(Partnerlink)* ist ein Monitoring Service, welcher die Erreichbarkeit von Webseiten überwacht und deren Antwortzeiten misst. Im Fall einer Nichterreichbarkeit der Zielseite verschickt der Dienst eine E-Mail, Tweet oder SMS als Benachrichtigung.
 
-Das *Serverstate* Plugin legt im WordPress-Administrationsbereich ein Dashboard-Widget an, welches Antwortzeiten und Erreichbarkeitswerte des Blogs als Statistik abbildet. Wie oft war der Blog offline? Hat sich nach einem Update die Performance verschlechtert? Das Serverstate Widget liefert Antworten und schafft einen Überblick über die Erreichbarkeit und Geschwindigkeit in den letzten 30 Tagen.
+Das *Serverstate* Plugin legt im WordPress-Administrationsbereich ein Dashboard-Widget an, welches Antwortzeiten und Erreichbarkeitswerte des Blogs als Statistik abbildet. Wie oft war der Blog offline? Hat sich nach einem Update die Performance verschlechtert? Das *Serverstate* Widget liefert Antworten und schafft einen Überblick über die Erreichbarkeit und Geschwindigkeit in den letzten 30 Tagen.
 
-Direkt im Serverstate Widget über den Link *Konfigurieren* werden die Zugangsdaten des Serverstate Accounts und die zuständige Sensor-ID (ID des Überwachungsauftrags) hinterlegt. Bedauerlicherweise stellt Serverstate keine API-Kommunikation mithilfe eines API-Schlüssels zur Verfügung, sodass Zugangsdaten des *Serverstate* Accounts in WordPress verschlüsselt gespeichert und ausschließlich zum Datenabgleich mit der *Serverstate* Schnittstelle verwendet werden (müssen).
+Direkt im *Serverstate* Widget über den Link *Konfigurieren* werden die Zugangsdaten des *Serverstate* Accounts und die zuständige Sensor-ID (ID des Überwachungsauftrags) hinterlegt. Bedauerlicherweise stellt *Serverstate* keine API-Kommunikation mithilfe eines API-Schlüssels zur Verfügung, sodass Zugangsdaten des *Serverstate* Accounts in WordPress verschlüsselt gespeichert und ausschließlich zum Datenabgleich mit der *Serverstate* Schnittstelle verwendet werden (müssen).
 
 Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei Mausberührungen erscheint die jeweilige Kennzahl zum gewählten Tag: *Antwortzeit in Millisekunden* oder *Erreichbarkeit in Prozent* (sind zwei Diagrammlinien).
 
@@ -30,7 +30,7 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 1. Bei neu angelegten *Serverstate* Überwachungsaufträgen kann es mehrere Stunden dauern, bis *Serverstate* hierzu Daten zum Abruf bereitstellt.
 1. Das Plugin verfügt über einen internen Cache, wo die Statistik für einen halben Tag aufbewahrt wird. Nach Ablauf der 12 Stunden wird eine Synchronisation durchgeführt.
 1. Die in Plugin-Optionen abgefragte Sensor-ID ist eine Zahl, die einem Überwachungsauftrag von *Serverstate* zugewiesen und beim Anzeigen bzw. Bearbeiten des Auftrages in der URL sichtbar ist. Das zu suchende Muster: *?sensor_id=912164573*
-1. *Serverstate* ist ein kostenpflichtiger Dienst. Der Kostenfaktor richtet sich ja nach Verbrauch und Häufigkeit der Prüfungen aus. [Kurze Einführung](https://plus.google.com/110569673423509816572/posts/hWdRrhWyots).
+1. *Serverstate* ist ein kostenpflichtiger Dienst. Der Kostenfaktor hängt von der Prüfungshäufigkeit ab. [Kurze Vorstellung des Dienstes](https://plus.google.com/110569673423509816572/posts/hWdRrhWyots).
 
 
 = Support =
@@ -44,17 +44,23 @@ Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
 
 
 = Unterstützung =
-* Per [Flattr](https://flattr.com/donation/give/to/sergej.mueller)
+* Per [Flattr](https://flattr.com/t/1768517)
 * Per [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6)
 
 
 = Autor =
-* [Google+](https://plus.google.com/110569673423509816572 "Google+")
-* [Plugins](http://wpcoder.de "Plugins")
+* [Twitter](https://twitter.com/wpSEO)
+* [Google+](https://plus.google.com/110569673423509816572)
+* [Plugins](http://wpcoder.de)
 
 
 
 == Changelog ==
+
+= 0.5 =
+* Ersatz für *deprecated* Benutzergruppen
+* Screenshot nach *assets* verschoben
+* Neuer Flattr-Link
 
 = 0.4 =
 * Unterstützung für WordPress 3.5

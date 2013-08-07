@@ -15,13 +15,13 @@ class Serverstate_Dashboard
 	* Installation auch für MU-Blog
 	*
 	* @since   0.1
-	* @change  0.1
+	* @change  0.5
 	*/
 
 	public static function init()
 	{
 		/* Filter */
-		if ( !current_user_can('level_2') ) {
+		if ( ! current_user_can('edit_dashboard') ) {
 			return;
 		}
 
@@ -145,7 +145,7 @@ class Serverstate_Dashboard
 	public static function print_backview()
 	{
 		/* Rechte */
-		if ( !current_user_can('manage_options') ) {
+		if ( ! current_user_can('manage_options') ) {
 			return;
 		}
 
