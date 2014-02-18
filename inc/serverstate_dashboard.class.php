@@ -303,7 +303,7 @@ class Serverstate_Dashboard
 		/* Leer? */
 		if ( empty($options['nickname']) or empty($options['password']) or empty($options['sensor_id']) ) {
 			return sprintf(
-				'Bitte Zugangsdaten im Dashboard-Widget <a href="%s">verfollständigen</a>.',
+				'Bitte Zugangsdaten im Dashboard-Widget <a href="%s">vervollständigen</a>.',
 				add_query_arg(
 					array(
 						'edit' => 'serverstate_dashboard#serverstate_dashboard'
