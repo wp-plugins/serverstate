@@ -1,6 +1,10 @@
 <?php
 
 
+/* Quit */
+defined('ABSPATH') OR exit;
+
+
 /**
 * Serverstate
 *
@@ -148,7 +152,7 @@ class Serverstate
 	public static function add_action_link($input)
 	{
 		/* Rechte? */
-		if ( !current_user_can('manage_options') ) {
+		if ( ! current_user_can('manage_options') ) {
 			return $input;
 		}
 

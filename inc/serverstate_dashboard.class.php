@@ -1,6 +1,10 @@
 <?php
 
 
+/* Quit */
+defined('ABSPATH') OR exit;
+
+
 /**
 * Serverstate_Dashboard
 *
@@ -74,7 +78,7 @@ class Serverstate_Dashboard
 		/* CSS registrieren */
 		wp_register_style(
 			'serverstate',
-			plugins_url('/css/dashboard.css', SERVERSTATE_FILE),
+			plugins_url('css/dashboard.min.css', SERVERSTATE_FILE),
 	  		array(),
 	  		SERVERSTATE_VERSION
 		);
@@ -95,7 +99,7 @@ class Serverstate_Dashboard
 		/* Registrieren */
 		wp_register_script(
 			'serverstate',
-			plugins_url('/js/dashboard.js', SERVERSTATE_FILE),
+			plugins_url('js/dashboard.min.js', SERVERSTATE_FILE),
 			array(),
 			SERVERSTATE_VERSION
 		);
@@ -216,7 +220,7 @@ class Serverstate_Dashboard
 					<input type="password" name="serverstate[password]" autocomplete="off" value="<?php esc_attr_e($options['password']) ?>" />
 				</td>
 				<td>
-					<a href="http://serverstate.de/?referrer=245049071" target="_blank" class="button-secondary">Bei Serverstate anmelden →</a>
+					<a href="https://serverstate.de/?referrer=245049071" target="_blank" class="button-secondary">Bei Serverstate anmelden →</a>
 				</td>
 			</tr>
 			<tr>
@@ -317,17 +321,14 @@ class Serverstate_Dashboard
 		for ($i = 0; $i < 30; $i ++) {
 			/* URL erfragen */
 			$response = wp_remote_get(
-				esc_url_raw(
-					add_query_arg(
-						array(
-							'nickname' => urlencode($options['nickname']),
-							'password' => $options['password'],
-							'sensor_id' => $options['sensor_id'],
-							'day' => date('d.m.Y', strtotime('-' .$i. ' day'))
-						),
-						'http://serverstate.de/api/1/daily_report/'
+				add_query_arg(
+					array(
+						'nickname' => urlencode($options['nickname']),
+						'password' => $options['password'],
+						'sensor_id' => $options['sensor_id'],
+						'day' => date('d.m.Y', strtotime('-' .$i. ' day'))
 					),
-					'http'
+					'https://serverstate.de/api/1/daily_report/'
 				),
 				array(
 					'timeout' => 30

@@ -1,6 +1,10 @@
 <?php
 
 
+/* Quit */
+defined('ABSPATH') OR exit;
+
+
 /**
 * Serverstate_Install
 *
@@ -26,9 +30,9 @@ class Serverstate_Install
 		global $wpdb;
 
 		/* Neuer MU-Blog */
-		if ( !empty($id) ) {
+		if ( ! empty($id) ) {
 			/* Im Netzwerk? */
-			if ( !is_plugin_active_for_network(SERVERSTATE_BASE) ) {
+			if ( ! is_plugin_active_for_network(SERVERSTATE_BASE) ) {
 				return;
 			}
 
@@ -46,7 +50,7 @@ class Serverstate_Install
 		}
 
 		/* Multisite & Network */
-		if ( is_multisite() && !empty($_GET['networkwide']) ) {
+		if ( is_multisite() && ! empty($_GET['networkwide']) ) {
 			/* Blog-IDs */
 			$ids = $wpdb->get_col("SELECT blog_id FROM `$wpdb->blogs`");
 
