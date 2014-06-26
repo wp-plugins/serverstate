@@ -185,7 +185,7 @@ class Serverstate_Dashboard
 
 			/* Sensor ID */
 			if ( !empty($input['sensor_id']) ) {
-				$input['sensor_id'] = intval($input['sensor_id']);
+				$input['sensor_id'] = (int)$input['sensor_id'];
 			}
 
 			/* Refresh */
