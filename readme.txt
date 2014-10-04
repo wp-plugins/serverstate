@@ -1,7 +1,7 @@
 === Serverstate ===
 Contributors: sergej.mueller
 Tags: server, monitoring, response, uptime, downtime, serverstate
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZAQUT9RLPW8QN
 Requires at least: 3.3
 Tested up to: 4.0
 Stable tag: trunk
@@ -43,7 +43,7 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 
 = Unterstützung =
 * Per [Flattr](https://flattr.com/t/1768517)
-* Per [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6)
+* Per [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZAQUT9RLPW8QN)
 
 
 = Autor =
