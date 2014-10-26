@@ -287,7 +287,7 @@ class Serverstate_Dashboard
 	* Call an die Serverstate-API
 	*
 	* @since   0.1
-	* @change  0.2
+	* @change  0.5.2
 	*
 	* @return  mixed  $data  Array mit API-Werten oder Fehlermeldungen
 	*/
@@ -331,7 +331,8 @@ class Serverstate_Dashboard
 					'https://serverstate.de/api/1/daily_report/'
 				),
 				array(
-					'timeout' => 30
+					'timeout'   => 30,
+                    'sslverify' => false
 				)
 			);
 

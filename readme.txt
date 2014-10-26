@@ -55,6 +55,9 @@ Die auf dem WordPress-Dashboard abgebildete Statistik ist interaktiv, d.h. bei M
 
 == Changelog ==
 
+= 0.5.2 =
+* Anpassung zwecks Wechsel des TLS-Zertifikats (auf Seite von Serverstate)
+
 = 0.5.1 =
 * Kommunikation mit *Serverstate* via HTTPS
 * Zusätzliche Sicherheitsprüfungen
