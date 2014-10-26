@@ -6,7 +6,7 @@ Author: Sergej M&uuml;ller
 Author URI: http://wpcoder.de
 Plugin URI: https://wordpress.org/plugins/serverstate/
 License: GPLv2 or later
-Version: 0.5.1
+Version: 0.5.2
 */
 
 /*
