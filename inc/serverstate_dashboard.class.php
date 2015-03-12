@@ -24,7 +24,7 @@ class Serverstate_Dashboard
 
 	public static function init()
 	{
-		/* Filter */
+		/* Capability check */
 		if ( ! current_user_can('edit_dashboard') ) {
 			return;
 		}
@@ -148,12 +148,46 @@ class Serverstate_Dashboard
 
 	public static function print_backview()
 	{
-		/* Rechte */
+		/* Capability check */
 		if ( ! current_user_can('manage_options') ) {
 			return;
 		}
 
-		/* Optionen */
+		/* Handle options */
+		if ( ! empty($_POST['serverstate']) && is_array($_POST['serverstate']) ) {
+			/* Referer check */
+			check_admin_referer('_serverstate');
+
+			/* Init data */
+			$input = $_POST['serverstate'];
+			$output = array();
+
+			/* Nickname */
+			if ( ! empty($input['nickname']) ) {
+				$output['nickname'] = sanitize_text_field($input['nickname']);
+			}
+
+			/* Password */
+			if ( ! empty($input['password']) ) {
+				$output['password'] = md5(sanitize_text_field($input['password']));
+			}
+
+			/* Sensor ID */
+			if ( ! empty($input['sensor_id']) ) {
+				$output['sensor_id'] = (int)$input['sensor_id'];
+			}
+
+			/* Update options */
+			update_option(
+				'serverstate',
+				$output
+			);
+
+			/* Delete cache */
+			delete_transient('serverstate');
+		}
+
+		/* Get options */
 		$options = wp_parse_args(
 			get_option('serverstate'),
 			array(
@@ -163,45 +197,7 @@ class Serverstate_Dashboard
 			)
 		);
 
-		/* Speichern */
-		if ( !empty($_POST['serverstate']) && is_array($_POST['serverstate']) ) {
-			/* Formular-Referer */
-			check_admin_referer('_serverstate');
-
-			/* Zuweisen */
-			$input = $_POST['serverstate'];
-
-			/* Benutzername */
-			if ( !empty($input['nickname']) ) {
-				$input['nickname'] = sanitize_text_field($input['nickname']);
-			}
-
-			/* Passwort */
-			if ( !empty($input['password']) ) {
-				if ( $input['password'] != $options['password'] ) {
-					$input['password'] = md5(sanitize_text_field($input['password']));
-				}
-			}
-
-			/* Sensor ID */
-			if ( !empty($input['sensor_id']) ) {
-				$input['sensor_id'] = (int)$input['sensor_id'];
-			}
-
-			/* Refresh */
-			$options = $input;
-
-			/* Save */
-			update_option(
-				'serverstate',
-				$options
-			);
-
-			/* Entleeren */
-			delete_transient('serverstate');
-		}
-
-		/* Security */
+		/* Set nonce field */
 		wp_nonce_field('_serverstate'); ?>
 
 		<table class="form-table">
@@ -217,7 +213,7 @@ class Serverstate_Dashboard
 			<tr>
 				<td>
 					<label>Passwort:</label>
-					<input type="password" name="serverstate[password]" autocomplete="off" value="<?php esc_attr_e($options['password']) ?>" />
+					<input type="password" name="serverstate[password]" autocomplete="off" value="" />
 				</td>
 				<td>
 					<a href="https://serverstate.de/?referrer=245049071" target="_blank" class="button-secondary">Bei Serverstate anmelden →</a>
@@ -232,7 +228,6 @@ class Serverstate_Dashboard
 					<em>Partnerlink. Danke.</em>
 				</td>
 			</tr>
-
 		</table>
 
 		<?php
@@ -251,15 +246,20 @@ class Serverstate_Dashboard
 
 	public static function get_stats($from = 'all')
 	{
-		/* Auf Cache zugreifen */
+		/* Capability check */
+		if ( ! current_user_can('edit_dashboard') ) {
+			return;
+		}
+
+		/* Read from cache */
 		$data = get_transient('serverstate');
 
-		/* Cache liefern? */
+		/* Return from cache? */
 		if ( $from === 'cache' ) {
 			return $data;
 		}
 
-		/* Cronjob */
+		/* If empty cache */
 		if ( empty($data) ) {
 			/* API Call */
 			$response = self::_api_call();
@@ -271,11 +271,11 @@ class Serverstate_Dashboard
 				$data['error'] = $response;
 			}
 
-			/* Merken */
+			/* Move into cache */
 			set_transient(
 			   'serverstate',
 			   $data,
-			   60 * 60 * 12 // = 12 Stunden
+			   60 * 60 * 12 // = 12 hours
 			 );
 		}
 
@@ -305,7 +305,7 @@ class Serverstate_Dashboard
 		);
 
 		/* Leer? */
-		if ( empty($options['nickname']) or empty($options['password']) or empty($options['sensor_id']) ) {
+		if ( empty($options['nickname']) OR empty($options['password']) OR empty($options['sensor_id']) ) {
 			return sprintf(
 				'Bitte Zugangsdaten im Dashboard-Widget <a href="%s">vervollständigen</a>.',
 				add_query_arg(

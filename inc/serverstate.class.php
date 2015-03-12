@@ -38,7 +38,7 @@ class Serverstate
 	public function __construct()
 	{
 		/* Filter */
-		if ( (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) or (defined('DOING_CRON') && DOING_CRON) or (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) ) {
+		if ( (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) OR (defined('DOING_CRON') && DOING_CRON) OR (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) ) {
 			return;
 		}
 
