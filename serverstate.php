@@ -34,6 +34,7 @@ defined('ABSPATH') OR exit;
 
 /* Konstanten */
 define('SERVERSTATE_FILE', __FILE__);
+define('SERVERSTATE_DIR', dirname(__FILE__));
 define('SERVERSTATE_BASE', plugin_basename(__FILE__));
 
 
@@ -70,7 +71,7 @@ function serverstate_autoload($class) {
 		require_once(
 			sprintf(
 				'%s/inc/%s.class.php',
-				dirname(__FILE__),
+				SERVERSTATE_DIR,
 				strtolower($class)
 			)
 		);
