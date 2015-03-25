@@ -31,7 +31,7 @@ function drawChart() {
 
 	/* Fehler? */
 	if ( typeof(serverstate.error) !== 'undefined' ) {
-		return output.html(serverstate.error);
+		return output.text(serverstate.error);
 	}
 
 	/* Extrahieren */
