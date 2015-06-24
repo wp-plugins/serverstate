@@ -1,5 +1,5 @@
 === Serverstate ===
-Contributors: sergej.mueller
+Contributors: pluginkollektiv
 Tags: server, monitoring, response, uptime, downtime, serverstate
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZAQUT9RLPW8QN
 Requires at least: 3.3
